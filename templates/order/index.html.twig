@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Validation my order!{% endblock %}
+
+{% block contenu %}
+ <h2> Je passe ma commande </h2>
+
+ <p>vous pouve termine vous informations  pour  passe  la commande </p>
+ <div class="row data-commande mb-5">
+     <div class="col-md-6">
+         {% set formHtml %}
+          {{form_start(form,{action:path('order.add')})}} 
+             {{ form_label(form.adresses,'choissier vous adress')}} /
+             <a href="{{path('account.address.add')}}">Ajouter une adress</a>
+          {{form_end(form)}}  
+         {% endset %}
+
+          {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+     </div>
+     <div class="col-md-6">
+        {% for produit in cart %}
+        <div class="row">
+            <div class="col-2">
+            <img src="/uploads/{{produit.product.illustration}}" height="80px" width="80px"  alt="" class="img-fluid" >
+        </div>
+        <div class="col-8 my-auto">
+            {{ produit.product.name}}<br/>
+            <small>{{ produit.product.subtitle}}</small>
+
+        </div>
+        <div class="col-2 my-auto">
+            <strong>X  {{ produit.quentity}}</strong>
+        </div >
+        </div>
+        <hr/>
+        
+       
+        
+        {% endfor %}
+        
+        <br/><br/>
+     </div>
+
+ </div>
+{% endblock %}

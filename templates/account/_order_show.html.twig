@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} my order!{% endblock %}
+
+{% block contenu %}
+<h1>Ma Commande  --  {{order.referance}}</h1>
+
+<hr/>
+
+ <strong>Commande Passe le : </strong> {{order.createdAt|date('d-m-Y')}}   <br/>
+   <strong>Commande Referance :</strong>  <small>{{order.referance}}</small> <br/>
+   <strong>Transporteur Choisir :  </strong> {{order.carriername}}
+
+   <hr/>
+   <h2>Detaille </h2>
+
+   <table class="table">
+    <thead>
+      <tr>
+        
+        <th scope="col">produit</th>
+        <th scope="col">price</th>
+        <th scope="col">quantity</th>
+        <th scope="col">total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          {% for detail in order.orderDetailles %}
+            <th scope="row">{{detail.product}}</th>
+            <td>{{detail.price}}</td>
+            <td>{{detail.quantity}}</td>
+            <td>{{detail.total}}</td>
+          {% endfor %}
+      </tr>
+      
+    </tbody>
+  </table>
+
+    <div class="mt-5 text-right">
+        <strong>Delivry  : </strong> {{order.carrierprice /100 }}Dt<br/>
+        <strong>Sous-Total :  </strong>{{order.total  /100 }}Dt<br/>
+        <strong>Total : </strong>{{(order.carrierprice + order.total)  /100 }}Dt<br/>
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} my account!{% endblock %}
+
+{% block contenu %}
+<h1>Mes Adress</h1>
+<a class="btn btn-info float-right" href="{{path('account.address.add')}}">Add Adress</a>
+<hr>
+<p> <a href="{{path('account')}}">Retoure  </a></p>
+{% if (app.user.addresses| length == 0) %}
+        <p class="text-center">
+            vous avez pas des adress pour ajoute  click <a href="{{path('account.address.add')}}" >ici</a> 
+        </p>
+
+{% else %}
+  <div class="row">
+ 
+    {% for adress in app.user.addresses %}
+       <div class="col-md-4">
+
+       
+        <div class="card" style="width: 18rem;">
+        
+            <div class="card-body">
+            <h5 class="card-title">{{ adress.name }}</h5>
+            <p class="card-text">{{ adress.adress}}.
+                <br/>
+                {{ adress.postal}}  -  {{ adress.city }}  - {{ adress.country }}
+            </p>
+            <a href="{{path('account.address.edit',{'id':adress.id})}}" ><i class="fa fa-edit"></i></a>
+            <a href="{{path('account.address.delete',{'id':adress.id})}}"  onclick="return confirm('Are you sure?')"class="float-right" ><i class="fa fa-trash"></i></a>
+
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% endblock %}

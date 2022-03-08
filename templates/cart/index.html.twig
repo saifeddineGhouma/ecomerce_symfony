@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart!{% endblock %}
+
+{% block contenu %}
+
+{% if cart %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">produit</th>
+        <th scope="col">quentity</th>
+        <th scope="col">price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% set total = null%}
+        {% for pro in cart %}
+      <tr>
+        <th>
+            <img src="/uploads/{{pro.product.illustration}}" height="80px" width="80px"  alt="" class="img-fluid" >
+        </th>
+        <td>
+          {{ pro.product.name}}</td>
+        <td>
+          <a href="{{path('cart.add',{'id':pro.product.id})}}">
+            <img src="{{asset('assets/img/add.png')}}" height="30px" width="30px"  alt="" class="img-fluid" >
+       </a>
+         X  {{ pro.quentity}}
+          <a href="{{path('cart.decresse',{'id':pro.product.id})}}">
+            <img src="{{asset('assets/img/mois.png')}}" height="30px" width="30px"  alt="" class="img-fluid" >
+       </a>
+        
+        </td>
+        <td>{{( pro.product.price/100) | number_format(2) }}</td>
+        <td>{{( (pro.product.price * pro.quentity)/100) | number_format(2) }}</td>
+        <td>
+          <a href="{{path('cart.delete',{'id':pro.product.id})}}"  onclick="return confirm('Are you sure?')">
+               <img src="{{asset('assets/img/remove.png')}}" height="30px" width="30px"  alt="" class="img-fluid" >
+          </a>
+        </td>
+        {% set total  = total + pro.product.price * pro.quentity %}
+
+      </tr>
+
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+  <div class="text-right">
+      <strong>Nbre de produit</strong> : {{cart|length}}  <br>
+      <strong>Total : </strong>  {{( total/100) | number_format(2) }}
+
+  </div>
+
+  <a href="{{path('order')}}" class="btn btn-success btn-block">Valide</a>
+  {% else %}
+  <h3>votre panier et vide </h3>
+
+  {% endif %}
+{% endblock %}

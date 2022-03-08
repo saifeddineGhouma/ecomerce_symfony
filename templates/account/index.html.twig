@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} my account!{% endblock %}
+
+{% block contenu %}
+<h1>Mon Compte</h1>
+<span class="float-right">
+{{app.user.firstname }} {{app.user.lastname }} 
+</span>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{{path('account_password')}}">Modifier mes infos</a></li>
+                <li class="list-group-item"><a href="{{path('account.order')}}">mes commandes</a></li>
+                <li class="list-group-item"><a href="{{path('account_address')}}">consulte mes adress</a></li>
+                <li class="list-group-item">
+                    <a href="{{path('app_logout')}}">
+                        deconnecte
+                    </a>
+                    </li>
+              </ul>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}order validate!{% endblock %}
+
+{% block contenu %}
+<h2>Confirmation valide</h2>
+<p>
+    Bonjour <b>{{order.user.firstname}}</b> votre commande de num <b>{{order.referance}}</b> a ete valide  <br/>
+    vous peuve  consulte votre mail  <b>{{order.user.email}}</b>
+    <hr>
+    commande  transfet     par <b>{{order.carrierName}}</b>  a votre adresse  : 
+    <br/>
+ <b>{{order.delivery| raw}}</b>   
+
+</p>
+<hr>
+<p>Pour voir votre commande consulte votre compte a <a href="{{path('account')}}">Ma Compte</a></p>
+{% endblock %}

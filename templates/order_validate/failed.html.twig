@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}order validate!{% endblock %}
+
+{% block contenu %}
+<h2>Confirmation echec </h2>
+<p>
+    Bonjour <b>{{order.user.firstname}}</b> votre commande de num <b>{{order.referance}}</b> a ete annulle  <br/>
+    vous peuve  consulte votre mail  <b>{{order.user.email}}</b>
+    <a href="{{path('order')}}" class="btn btn-success">
+         Reessayer le paiemnt
+    </a>
+   
+</p>
+<hr>
+{% endblock %}

@@ -1,0 +1,43 @@
+.footer{
+    text-align: center;
+   margin-top:300px;
+  /* position: fixed;*/
+    bottom: 0;
+    width: 100%;
+    background-color: #afafaf;
+    padding-top: 25px;
+}
+.product_item{
+   
+    padding: 5px;
+    text-align: center;
+}
+.product_item h5{
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 1px;
+}
+.product_item .product-subtitle{
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+.product_item .product-price{
+    font-size: 15px;
+    font-weight: bold;
+}
+.product-container{
+    margin-bottom: 100px;
+}
+.form-check{
+    margin: 5px;
+    background-color: lightblue;
+
+}
+
+.data-commande
+{
+  /*  position: relative;
+    z-index: 1;*/
+    margin-bottom: 50px;
+}
